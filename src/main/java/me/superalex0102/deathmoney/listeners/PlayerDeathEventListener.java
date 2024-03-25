@@ -25,7 +25,7 @@ public class PlayerDeathEventListener implements Listener {
             if (this.plugin.getConfig().getString("settings.mode").equalsIgnoreCase("DYNAMIC")) {
                 amount = Math.round(Math.round(amount * 100.0)) / 100.0;
             }
-            else {
+            else if (!this.plugin.getConfig().getString("settings.mode").equalsIgnoreCase("STATIC")) {
                 Bukkit.getLogger().warning("Mode is invalid! Use either DYNAMIC or STATIC!");
                 return;
             }
