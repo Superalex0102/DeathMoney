@@ -8,6 +8,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+import java.text.DecimalFormat;
+
 public class PlayerDeathEventListener implements Listener {
 
     private final DeathMoney plugin;
@@ -23,14 +25,15 @@ public class PlayerDeathEventListener implements Listener {
             Player p = e.getEntity();
 
             if (this.plugin.getConfig().getString("settings.mode").equalsIgnoreCase("DYNAMIC")) {
-                amount = Math.round(Math.round(amount * 100.0)) / 100.0;
+                DecimalFormat df = new DecimalFormat("#.##");
+                amount = Double.parseDouble(df.format(this.plugin.getEconomy().getBalance(e.getEntity()) * amount));
             }
             else if (!this.plugin.getConfig().getString("settings.mode").equalsIgnoreCase("STATIC")) {
                 Bukkit.getLogger().warning("Mode is invalid! Use either DYNAMIC or STATIC!");
                 return;
             }
 
-            this.plugin.getEconomy().depositPlayer(p, amount);
+            this.plugin.getEconomy().withdrawPlayer(p, amount);
             p.sendMessage(TextUtils.applyColor(this.plugin.getConfig().getString("messages.deathMessage")
                     .replaceAll("%amount%", String.valueOf(amount))));
             if (this.plugin.getConfig().getBoolean("settings.consoleLogging")) {
