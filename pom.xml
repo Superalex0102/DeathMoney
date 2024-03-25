@@ -10,7 +10,7 @@
 
     <build>
         <defaultGoal>clean install</defaultGoal>
-        <finalName>SantaRewards-${project.version}</finalName>
+        <finalName>DeathMoney-${project.version}</finalName>
 
         <plugins>
             <plugin>
