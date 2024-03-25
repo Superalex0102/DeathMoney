@@ -34,7 +34,9 @@ public class PlayerDeathEventListener implements Listener {
             p.sendMessage(TextUtils.applyColor(this.plugin.getConfig().getString("messages.deathMessage")
                     .replaceAll("%amount%", String.valueOf(amount))));
             if (this.plugin.getConfig().getBoolean("settings.consoleLogging")) {
-                this.plugin.getServer().getLogger().info(this.plugin.getConfig().getString("messages.deathMessageConsole"));
+                this.plugin.getServer().getLogger().info(this.plugin.getConfig().getString("messages.deathMessageConsole")
+                        .replaceAll("%player%", p.getName())
+                        .replaceAll("%amount%", String.valueOf(amount)));
             }
         }
     }
