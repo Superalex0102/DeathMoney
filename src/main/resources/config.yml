@@ -1,0 +1,10 @@
+settings:
+  # Either DYNAMIC or STATIC
+  mode: DYNAMIC
+  # For DYNAMIC: 0.15
+  # For STATIC: 100
+  amount: 0.1
+  consoleLogging: true
+messages:
+  deathMessage: "&e&lDEATH &8» &fMeghaltál és elvesztettél &#FF0000$%amount% &fösszeget!"
+  deathMessageConsole: "%player% meghalt és elvesztett %amount% összeget!"

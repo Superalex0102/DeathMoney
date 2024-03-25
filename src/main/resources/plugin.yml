@@ -1,0 +1,7 @@
+name: DeathMoney
+version: 1.0
+author: Superalex0102
+main: me.superalex0102.deathmoney.DeathMoney
+api-version: 1.13
+depend:
+  - Vault
